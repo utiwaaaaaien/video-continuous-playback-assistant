@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "视频连续播放助手",
+  "version": "3.1.0",
+  "version_name": "V3.1",
+  "description": "连续播放、目录完成后自动跨课程、两分钟自动刷新恢复与人工处理通知。",
+  "permissions": [
+    "storage",
+    "notifications",
+    "power",
+    "alarms",
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "视频连续播放助手 V3.1"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://estudy.enaea.edu.cn/web/player/*"
+      ],
+      "js": [
+        "core.js",
+        "ui.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "minimum_chrome_version": "120",
+  "host_permissions": [
+    "https://estudy.enaea.edu.cn/*"
+  ]
+}
